@@ -10,23 +10,20 @@ public class Exercise31 {
 
     }
 
-
     //metodo estatico para leer ficheros
     public static void fileReader(File fileSource) {
 
-        try (FileReader fr = new FileReader(fileSource);
-             BufferedReader br = new BufferedReader(fr)) {
-
-            String linea = "";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileSource))) {
+            String linea;
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
             }
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException fnf) {
             System.out.println("Fichero no encontrado. ");
-            ex.printStackTrace();
-        } catch (IOException ex2) {
+            fnf.printStackTrace();
+        } catch (IOException ioe) {
             System.out.println("Fallo al leer lineas del fichero");
-            ex2.printStackTrace();
+            ioe.printStackTrace();
         }
 
     }
